@@ -54,7 +54,7 @@ export default class MainPage extends Component{
         return(
             <div className="MainPage">
                 <div className="filterContainer">
-                    <img alt="checkbox__temp" src="./images/bt-checkbox-non-checked.svg"/>
+                    <input name="isScrap" type="checkbox"/>
                     <span className="filter__text">스크랩한 것만 보기</span>
                 </div>
                 <div className="feedContainer">
