@@ -4,8 +4,8 @@ import './Profile.scss';
 function Profile({nickName, profileImage}) {
     return(
         <div className="profile">
-            <img className="profile__photo" src="./images/ic-avatar-cat.svg" alt="profileImage"/>
-            <span className="profile__text">hey</span>
+            <img className="profile__photo" src={profileImage} alt="profileImage"/>
+            <span className="profile__text">{nickName}</span>
         </div>
     );
 }

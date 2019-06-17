@@ -1,0 +1,25 @@
+.MainPage{
+    padding: 30px 60px 60px 30px;
+    justify-items: center;
+    text-align: center;
+}
+
+.filterContainer{
+    display: flex;
+}
+
+.feedContainer{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.filter__text{
+    font-size: 15px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #424242;
+    margin-left: 6px;
+}

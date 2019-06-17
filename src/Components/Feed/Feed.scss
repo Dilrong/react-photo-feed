@@ -1,7 +1,13 @@
 .Feed{
-    display: flex;
+    display: inline;
     flex-direction: column;
-    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.scrap{
+    position: relative;
+    right: 30px;
+    bottom: 10px;
 }
 
 .Rectangle{
