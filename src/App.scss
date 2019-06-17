@@ -1,0 +1,21 @@
+input[type='checkbox']{
+    width: 24px !important;
+    height: 24px !important;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    appearance:none;
+    outline: none;
+    border: none;
+    box-shadow: none;
+    background: url('/images/bt-checkbox-non-checked.svg')no-repeat;
+}
+
+input[type='checkbox']:checked{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    appearance:none;
+    box-shadow: none;
+    background: url('/images/bt-checkbox-checked.svg') no-repeat;
+}
