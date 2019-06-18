@@ -2,9 +2,11 @@
 
 ## 개요
 * **목적**
+
 본 문서는 Photo Feed 프로젝트의 구조를 문서화하여 차후 프로젝트 유지보수를 위해 작성되었습니다.
 
 * **SITE ADDRESS**
+
 `http://localhost:3000`
 
 * **Getting Start**
@@ -18,7 +20,8 @@ npm start
 
 자세한 dependencies 및 scripts는 package.json을 참고해주시면 됩니다.
 
-* **유의사항**
+## 유의사항
+
 본 프로젝트는 테스트 프로젝트로 server에서 데이터를 가져올 때 cors(Cross-Origin Resource Sharing)오류가 발생할 수 있습니다.
 
 크롬으로 실행시 --disable-web-security으로 실행하거나 플러그인 설치를 추천드립니다.
