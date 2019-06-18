@@ -10,6 +10,9 @@ function Feed({data, localObj}) {
         localObj.map((obj) => (
             (obj.id === data.id) ? setSrc("./images/scrap_on.svg") : false
         ))
+        return () => {
+            setSrc("./images/scrap_off.svg")
+        }
     }, [data, localObj]);
 
     return(
