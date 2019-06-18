@@ -1,68 +1,64 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Photo Feed
 
-## Available Scripts
+## 개요
+* **목적**
+본 문서는 Photo Feed 프로젝트의 구조를 문서화하여 차후 프로젝트 유지보수를 위해 작성되었습니다.
 
-In the project directory, you can run:
+* **SITE ADDRESS**
+`http://localhost:3000`
 
-### `npm start`
+* **Getting Start**
+```
+npm install
+npm start
+```
+본 프로젝트는 Create-React-App 기반으로 제작되었습니다.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+추가된 라이브러리는 axios, node-sass입니다.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+자세한 dependencies 및 scripts는 package.json을 참고해주시면 됩니다.
 
-### `npm test`
+* **유의사항**
+본 프로젝트는 테스트 프로젝트로 server에서 데이터를 가져올 때 cors(Cross-Origin Resource Sharing)오류가 발생할 수 있습니다.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+크롬으로 실행시 --disable-web-security으로 실행하거나 플러그인 설치를 추천드립니다.
 
-### `npm run build`
+## File Structure
+```
+public
+ - images
+ - favicon.ico
+ - index.html
+ - manifest.json
+src
+ - api
+ - Components
+ - Pages
+ App.scss
+ App.js
+ index.scss
+ serviceWorker.js
+```
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Pages
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+* **MainPage**
+    * 원페이지앱이지만 추후 Router 확장성을 대비하여 설정
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Components
 
-### `npm run eject`
+* **Feed**
+    * 사진을 보여주는 카드뷰로 React Hooks으로 scrap 기능 사용
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+* **Profile**
+    * 게시글을 올린 사용자의 아바타와 닉네임
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Function
+- `getData()` : server 데이터를 가져오기 위함
+- `handleOnScroll()` : 무한 스크롤 구현을 위함, documentElement를 이용하여 스크롤과 기기 화면 사이즈를 계산비교 한 후 스크롤의 바닥 부분을 찾음
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Version History
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+  Date | Version | author
+  ------ | ------ | ------
+  2019.06.18 | <center> v0.1 </center> | 이학성
