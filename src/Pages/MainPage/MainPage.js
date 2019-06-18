@@ -24,10 +24,10 @@ export default class MainPage extends Component{
     }
 
     handleOnScroll(){
-        var scrollTop = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
-        var scrollHeight = (document.documentElement && document.documentElement.scrollHeight) || document.body.scrollHeight;
-        var clientHeight = document.documentElement.clientHeight || window.innerHeight;
-        var scrolledToBottom = Math.ceil(scrollTop + clientHeight) >= scrollHeight;
+        let scrollTop = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
+        let scrollHeight = (document.documentElement && document.documentElement.scrollHeight) || document.body.scrollHeight;
+        let clientHeight = document.documentElement.clientHeight || window.innerHeight;
+        let scrolledToBottom = Math.ceil(scrollTop + clientHeight) >= scrollHeight;
 
         if(scrolledToBottom){
             this.setState({
@@ -59,6 +59,7 @@ export default class MainPage extends Component{
 
     render(){
         const { data, isScrap } = this.state;
+        const localObj = localStorage.getItem("scrap") ? JSON.parse(localStorage.getItem("scrap")) : [];
         return(
             <div className="MainPage">
                 <div className="filterContainer">
@@ -68,10 +69,10 @@ export default class MainPage extends Component{
                 <div className="feedContainer">
                 {isScrap ? 
                  JSON.parse(localStorage.scrap).map((data, index) => (
-                    <Feed key={index} data={data}/>
+                    <Feed key={index} data={data} localObj={localObj}/>
                  )) :                     
                  data.map((data, index) => (
-                    <Feed key={index} data={data}/>
+                    <Feed key={index} data={data} localObj={localObj}/>
                 ))}
                 </div>
             </div>

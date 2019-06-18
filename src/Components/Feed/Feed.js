@@ -3,22 +3,20 @@ import './Feed.scss';
 import {Profile} from '../index';
 
 
-function Feed({data}) {
+function Feed({data, localObj}) {
     const [src, setSrc] = useState("./images/scrap_off.svg");
 
     useEffect(() => {
-        let localObj = localStorage.getItem("scrap") ? JSON.parse(localStorage.getItem("scrap")) : [];
         localObj.map((obj) => (
-            (obj.id === data.id) ? setSrc("./images/scrap_on.svg") : setSrc("./images/scrap_off.svg")
+            (obj.id === data.id) ? setSrc("./images/scrap_on.svg") : false
         ))
-    });
+    }, [data, localObj]);
 
     return(
         <div className="Feed">
             <Profile nickName={data.nickname} profileImage={data.profile_image_url}/>
             <img className="Rectangle" alt="FeedPhoto" src={data.image_url}/>
             <img className="scrap" alt="scrap" src={src} onClick={()=>{
-                let localObj = localStorage.getItem("scrap") ? JSON.parse(localStorage.getItem("scrap")) : [];
                 setSrc("./images/scrap_on.svg");
                 if(src === "./images/scrap_on.svg"){
                     setSrc("./images/scrap_off.svg");
