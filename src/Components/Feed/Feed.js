@@ -8,7 +8,7 @@ function Feed({data}) {
 
     useEffect(() => {
         let localObj = localStorage.getItem("scrap") ? JSON.parse(localStorage.getItem("scrap")) : [];
-        localObj.map((obj, index) => (
+        localObj.map((obj) => (
             (obj.id === data.id) ? setSrc("./images/scrap_on.svg") : setSrc("./images/scrap_off.svg")
         ))
     });

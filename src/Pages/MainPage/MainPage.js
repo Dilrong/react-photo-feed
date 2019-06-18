@@ -11,6 +11,7 @@ export default class MainPage extends Component{
         this.state = {
             data: [],
             isLoading: false,
+            isScrap: false,
             pageCount: 1,
         };
 
@@ -36,13 +37,20 @@ export default class MainPage extends Component{
         }
     }
 
+    handleCheck = (e) => {
+        const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+    
+        this.setState({
+            [e.target.name]: value
+        })
+      }
+
     getData(){
         Axios.get(`${API}/page_${this.state.pageCount}.json`)
         .then(async(res) => {
             await this.setState({
                 data: this.state.data.concat(...res.data)
             })
-            console.log(this.state.data)
         }).catch(err => {
             console.log(err)
             }
@@ -50,19 +58,21 @@ export default class MainPage extends Component{
     }
 
     render(){
-        const { data } = this.state;
+        const { data, isScrap } = this.state;
         return(
             <div className="MainPage">
                 <div className="filterContainer">
-                    <input name="isScrap" type="checkbox"/>
+                    <input name="isScrap" type="checkbox" onChange={this.handleCheck}/>
                     <span className="filter__text">스크랩한 것만 보기</span>
                 </div>
                 <div className="feedContainer">
-                {
-                    data.map((data, index) => (
-                        <Feed key={index} data={data}/>
-                    ))
-                }
+                {isScrap ? 
+                 JSON.parse(localStorage.scrap).map((data, index) => (
+                    <Feed key={index} data={data}/>
+                 )) :                     
+                 data.map((data, index) => (
+                    <Feed key={index} data={data}/>
+                ))}
                 </div>
             </div>
         )
