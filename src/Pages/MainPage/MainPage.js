@@ -24,10 +24,10 @@ export default class MainPage extends Component{
     }
 
     handleOnScroll(){
-        let scrollTop = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
-        let scrollHeight = (document.documentElement && document.documentElement.scrollHeight) || document.body.scrollHeight;
-        let clientHeight = document.documentElement.clientHeight || window.innerHeight;
-        let scrolledToBottom = Math.ceil(scrollTop + clientHeight) >= scrollHeight;
+        const scrollTop = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
+        const scrollHeight = (document.documentElement && document.documentElement.scrollHeight) || document.body.scrollHeight;
+        const clientHeight = document.documentElement.clientHeight || window.innerHeight;
+        const scrolledToBottom = Math.ceil(scrollTop + clientHeight) >= scrollHeight;
 
         if(scrolledToBottom){
             this.setState({
@@ -60,6 +60,13 @@ export default class MainPage extends Component{
     render(){
         const { data, isScrap } = this.state;
         const localObj = localStorage.getItem("scrap") ? JSON.parse(localStorage.getItem("scrap")) : [];
+        const feedlist = isScrap ? 
+            JSON.parse(localStorage.scrap).map((data, index) => (
+               <Feed key={index} data={data} localObj={localObj}/>
+            )) :                     
+            data.map((data, index) => (
+               <Feed key={index} data={data} localObj={localObj}/>
+           ))
         return(
             <div className="MainPage">
                 <div className="filterContainer">
@@ -67,13 +74,7 @@ export default class MainPage extends Component{
                     <span className="filter__text">스크랩한 것만 보기</span>
                 </div>
                 <div className="feedContainer">
-                {isScrap ? 
-                 JSON.parse(localStorage.scrap).map((data, index) => (
-                    <Feed key={index} data={data} localObj={localObj}/>
-                 )) :                     
-                 data.map((data, index) => (
-                    <Feed key={index} data={data} localObj={localObj}/>
-                ))}
+                    {feedlist}
                 </div>
             </div>
         )
