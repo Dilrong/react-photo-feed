@@ -1,6 +1,9 @@
-body {
-  margin: 0;
+html, #root{
+  margin-right: auto;
+  margin-left: auto
+}
+
+body{
+  margin: auto;
   font-family: "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
